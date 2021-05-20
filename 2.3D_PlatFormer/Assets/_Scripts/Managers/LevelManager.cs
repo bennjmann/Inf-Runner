@@ -18,8 +18,6 @@ public class LevelManager : MonoBehaviour {
 
     private Vector3 m_LastTileEnd;                            // End Tiles of PreFabs.
 
-    private RemoveTile m_RemoveTile;
-
     private void Awake() {
         m_LastTileEnd = m_LevelStart.position;          // Sets The last tiles position to the first End tile position.
     }

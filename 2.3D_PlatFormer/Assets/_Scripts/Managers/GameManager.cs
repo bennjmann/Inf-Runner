@@ -22,10 +22,15 @@ public class GameManager : MonoBehaviour {
     // GameObjects.
     public GameObject m_Player;         // Player Gameobject
 
+    
+    // Other Managers.
+    public GameObject m_LevelManager;
+    
     /// <summary>
     /// States of the game.
     /// </summary>
     public enum GameState {         
+        MainMenu,
         Start,
         Playing,
         GameOver
@@ -37,17 +42,27 @@ public class GameManager : MonoBehaviour {
 
 
     private void Awake() {
-        m_GameState = GameState.Start;
-
+        m_GameState = GameState.MainMenu;
+        m_Player.SetActive(false);
+        m_LevelManager.SetActive(false);
         m_MainCamera.enabled = false;
         m_ScoreText.gameObject.SetActive(false);   // Sets Score Text to off. 
+        
         
     }
 
     private void Update() {
         switch (m_GameState) {
+            case GameState.MainMenu:
+                if (Input.GetKeyDown(KeyCode.Return) == true) {
+                    m_GameState = GameState.Start;
+                    
+                }
+            break;
             case GameState.Start:
                 if (Input.GetKeyDown(KeyCode.Return) == true) {         // If player hits enter.
+                    m_Player.SetActive(true);
+                    m_LevelManager.SetActive(true);
                     m_MainCamera.enabled = true;
                     m_IntroCamera.enabled = false;
                     Debug.Log("Playing");
@@ -57,14 +72,15 @@ public class GameManager : MonoBehaviour {
                 break;
             case GameState.Playing:
                 m_ScoreText.gameObject.SetActive(true);
-
-                //if (IsPlayerDead() == true) {       // Checks if Player is dead.
-                 //   m_GameState = GameState.GameOver;
-                //}
+                if (Input.GetKeyDown(KeyCode.End)) {
+                m_GameState = GameState.GameOver;
+            }
+                
                 break;
             case GameState.GameOver:
                 if (Input.GetKeyUp(KeyCode.R)) {
                     // ToDo Restart Game.
+                    m_GameState = GameState.Start;
                 }
                 break;
         }

@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
 
     private Vector3 m_PlayerVelocity;          // Players Velocity (Being used for Gravity).
     
-    public float m_DistanceTravelled;           // Distance Traveled Use for score.
+    public float m_DistanceTravelledZ;           // Distance Traveled Use for score.
     private Vector3 m_LastPos;                 // Last Position Used for score. 
 
     private void Awake() {
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour {
     
     
     private void Update() {
-        if (m_GameManager.State == GameManager.GameState.Playing) {
+        if (m_GameManager.State == GameManager.GameState.Start || m_GameManager.State == GameManager.GameState.MainMenu) {
             m_Animator.SetBool("isMoving", true);
         }
         Jumping();
@@ -63,10 +63,11 @@ public class PlayerController : MonoBehaviour {
     /// Movement of Player.
     /// </summary>
     private void  Movement() {
-        if (m_GameManager.State == GameManager.GameState.Start) {
+        if (m_GameManager.State == GameManager.GameState.Start || m_GameManager.State == GameManager.GameState.MainMenu) {
             m_Vertical = 0f;
             m_ZMoveSpeed = 0f;
-        } else m_ZMoveSpeed = m_Sprint.m_PlayerSpeed;
+        }
+        else ;
         var move = new Vector3(-m_Vertical * m_XMoveSpeed, m_PlayerVelocity.y += m_Gravity * Time.deltaTime, m_ZMoveSpeed);       // (Input of Players Press (Vertical) * (M_XMoveSpeed), Gravity, Move's player Forwards/To Z.
         m_CharacterController.Move(move * Time.deltaTime);                                                                    // Moves Character Based on (Move) Vector.
     }
@@ -76,17 +77,17 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     private void Jumping() {
         m_IsGrounded = m_CharacterController.isGrounded;           // Sets m_IsGrounded to CC.isGrounded Properties
-        if (m_GameManager.State == GameManager.GameState.Start) {
+        if (m_GameManager.State == GameManager.GameState.Start || m_GameManager.State == GameManager.GameState.MainMenu) {
             m_Jump = false;
         }
-        if (m_IsGrounded && m_PlayerVelocity.y < 0) {          // Ask if grounded and Velocity.y < 0.
-           m_PlayerVelocity.y = 0f;                           // Sets Player's Velocity.y to 0 When Grounded.else 
-        } else if ( m_Jump && m_IsGrounded) {
+          if ( m_Jump && m_IsGrounded) {
             // If Key is Pressed and Grounded.
-            m_PlayerVelocity.y += Mathf.Sqrt(m_JumpHeight * -3.0f * m_Gravity);                                     // Jump (Velocity.y += Sqrt JumpHeight+-)..
-        } else if (m_PlayerVelocity.y < 0) {                                                                             // If player is falling.
-            m_PlayerVelocity += Vector3.up * (m_Gravity * (m_fallMultiplier - 1) * Time.deltaTime);              // Used to fall Faster by adding the fall multiplier to the downforces.
-        }
+            m_PlayerVelocity.y += Mathf.Sqrt(m_JumpHeight * -3.0f * m_Gravity);                                           // Jump (Velocity.y += Sqrt JumpHeight+-)..
+        }  if (m_PlayerVelocity.y < 0) {                                                                               // If player is falling.
+            m_PlayerVelocity += Vector3.up * (m_Gravity * (m_fallMultiplier - 1) * Time.deltaTime);                       // Used to fall Faster by adding the fall multiplier to the downforces.
+        }  if (m_IsGrounded && m_PlayerVelocity.y < 0) {                                                             // Ask if grounded and Velocity.y < 0.
+              m_PlayerVelocity.y = 0f;                                                                                  // Sets Player's Velocity.y to 0 When Grounded.else 
+          }
         
     }
     /// <summary>
@@ -107,17 +108,28 @@ public class PlayerController : MonoBehaviour {
     /// Distance Player has Traveled, Basically the score.
     /// </summary>
     private void DistanceTraveled() {
+        Vector3 distanceTravelled;
         if (Input.GetAxisRaw("Sprint") == 1 && m_Sprint.m_IsSprinting == true) {                    // If Sprinting.
-            m_DistanceTravelled += Vector3.Distance(transform.position, m_LastPos) * 2;        // Score Is x2.
-            m_LastPos = transform.position;                                                       // This is so score counts by one's, Rather then From start.
+            Vector3 distanceVector = transform.position - m_LastPos;  
+            float DistanceThisFrame = distanceVector.z * 2;
+            m_DistanceTravelledZ += DistanceThisFrame;
+            m_LastPos = transform.position;
         }
         else {
-            m_DistanceTravelled += Vector3.Distance(transform.position, m_LastPos);         // How Score Is calculated.
-            m_LastPos = transform.position;                                                    // So score is counted by one's.
+            Vector3 distanceVector = transform.position - m_LastPos;  
+            float DistanceThisFrame = distanceVector.z;
+            m_DistanceTravelledZ += DistanceThisFrame;
+            m_LastPos = transform.position;
         }
     }
     
     void Animations() {
+        // Start
+        if (m_GameManager.State == GameManager.GameState.Playing) {
+            m_Animator.SetBool("isMoving", true);
+        }
+        
+        
         // Falling
         if (m_IsGrounded) {
             m_Animator.SetBool("isFalling", false);

@@ -20,7 +20,7 @@ public class BackGroundLoop : MonoBehaviour {
   private int m_BackgroundsSpawned;     // How many background has been spawned.
   
 
-  private void Start() {
+  private void OnEnable() {
     for (int i = 0; i <= m_Children; i++) {
       m_Random = Random.Range(0, m_BackGround.Length);
       SpawnBackGrounds(m_BackGround[m_Random]);

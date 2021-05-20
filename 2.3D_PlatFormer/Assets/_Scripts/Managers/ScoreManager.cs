@@ -18,9 +18,7 @@ public class ScoreManager : MonoBehaviour {
       m_GameManager = m_GameManager.GetComponent<GameManager>();
    }
    private void Update() {
-   //   if (m_Player.activeSelf == true) {                                                  // If play is alive
-      //   m_Score.text = "Score:" + (int)m_CurrentScore.m_DistanceTravelled; // Updated Text To display Score.
-    //  }
+       m_Score.text = "Score:" + (int)m_CurrentScore.m_DistanceTravelledZ; // Updated Text To display Score.
    }
 
 
