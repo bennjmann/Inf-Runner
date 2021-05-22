@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour {
             m_Vertical = 0f;
             m_ZMoveSpeed = 0f;
         }
-        else ;
         var move = new Vector3(-m_Vertical * m_XMoveSpeed, m_PlayerVelocity.y += m_Gravity * Time.deltaTime, m_ZMoveSpeed);       // (Input of Players Press (Vertical) * (M_XMoveSpeed), Gravity, Move's player Forwards/To Z.
         m_CharacterController.Move(move * Time.deltaTime);                                                                    // Moves Character Based on (Move) Vector.
     }
@@ -108,7 +107,6 @@ public class PlayerController : MonoBehaviour {
     /// Distance Player has Traveled, Basically the score.
     /// </summary>
     private void DistanceTraveled() {
-        Vector3 distanceTravelled;
         if (Input.GetAxisRaw("Sprint") == 1 && m_Sprint.m_IsSprinting == true) {                    // If Sprinting.
             Vector3 distanceVector = transform.position - m_LastPos;  
             float DistanceThisFrame = distanceVector.z * 2;

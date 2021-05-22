@@ -13,11 +13,12 @@ public class LevelManager : MonoBehaviour {
 
     public Transform m_LevelStart;                                // Starting Tiles End Position.
     public List<Transform> m_TileList;                           // List of Tiles.
-    public GameObject m_Player;                                 // "Player"
+    private Vector3 m_LastTileEnd;                            // End Tiles of PreFabs.
     
 
-    private Vector3 m_LastTileEnd;                            // End Tiles of PreFabs.
-
+    public GameObject m_powerUp;
+    public GameObject m_Player;                                 // "Player"
+    
     private void Awake() {
         m_LastTileEnd = m_LevelStart.position;          // Sets The last tiles position to the first End tile position.
     }
@@ -58,10 +59,6 @@ public class LevelManager : MonoBehaviour {
     private Transform SpawnTile(Transform tileEnd, Vector3 spawnPos) {
         Transform tilesTransform = Instantiate(tileEnd, spawnPos, Quaternion.identity);         // Instantiates tiles.
         return tilesTransform;
-    }
-
-    public void TileDestroy(GameObject Tile) {
-        Destroy(Tile);
     }
 
     /// <summary>
