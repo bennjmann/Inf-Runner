@@ -10,6 +10,7 @@ public class PowerUpSpawner : MonoBehaviour {
   public Renderer m_SpawnBounds;
   
   private void OnEnable() {
+      //TODO Add Random Chance to Spawn power rather then it always spawning.
      GameObject powerUp = Instantiate(m_PowerUps[0], transform.position, Quaternion.identity) as GameObject;
      float randomZ = Random.Range(-m_SpawnBounds.bounds.extents.z, m_SpawnBounds.bounds.extents.z) + transform.parent.position.z;
      float randomX = Random.Range(-m_SpawnBounds.bounds.extents.x, m_SpawnBounds.bounds.extents.x) + transform.parent.position.x;
@@ -19,11 +20,11 @@ public class PowerUpSpawner : MonoBehaviour {
      var rayCast = Physics.Raycast(transformPosition,Vector3.down, out hit);
      Debug.DrawRay(transformPosition,Vector3.down * 20, Color.green, 1000000);
      if (rayCast) {
-         transformPosition.y = hit.point.y + powerUp.GetComponent<Renderer>().bounds.extents.y;
+         transformPosition.y = hit.point.y + powerUp.GetComponentInChildren<Renderer>().bounds.extents.y;
          powerUp.transform.position = transformPosition;
          powerUp.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
          Debug.DrawRay(transformPosition, hit.normal, Color.red, 10000);
-     }
+     } else { Destroy(powerUp);}
 
   }
 

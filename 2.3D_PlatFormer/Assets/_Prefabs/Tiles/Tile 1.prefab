@@ -3575,8 +3575,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e24b7c0a672f4e40bc6d2a7de2addf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LevelManager: {fileID: 0}
-  m_ground: {fileID: 280897719943027741}
+  m_PowerUps:
+  - {fileID: 3973483894146207337, guid: 743383ad82aa1d84fa355712d71ef4bd, type: 3}
+  m_SpawnBounds: {fileID: 7204067609640572544}
 --- !u!1 &8861337323680397943
 GameObject:
   m_ObjectHideFlags: 0
@@ -4799,7 +4800,7 @@ MonoBehaviour:
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
-  m_SelectedVertices: 03000000
+  m_SelectedVertices: 
 --- !u!23 &8861337324181531590
 MeshRenderer:
   m_ObjectHideFlags: 0

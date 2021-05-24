@@ -891,7 +891,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16280
+  m_Name: pb_Mesh16284
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1805,7 +1805,7 @@ Transform:
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &609918996
 GameObject:
@@ -2226,7 +2226,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16324
+  m_Name: pb_Mesh16328
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3029,101 +3029,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058056339}
   m_CullTransparentMesh: 1
---- !u!1 &1137119286
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1137119290}
-  - component: {fileID: 1137119289}
-  - component: {fileID: 1137119288}
-  - component: {fileID: 1137119287}
-  m_Layer: 0
-  m_Name: Cube (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1137119287
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137119286}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1137119288
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137119286}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1137119289
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137119286}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1137119290
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137119286}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 115.006}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1225268591 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e73f9e6486149024fab737600dc1a39d, type: 3}
@@ -3819,11 +3724,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!23 &1991063825 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7204067609640572544, guid: 69eaf6d587905fa449767746c5a1a815, type: 3}
-  m_PrefabInstance: {fileID: 2006771010903091762}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2019101052
 GameObject:
   m_ObjectHideFlags: 0
@@ -4095,33 +3995,17 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 891390677}
-    - target: {fileID: 4550240872554729659, guid: 69eaf6d587905fa449767746c5a1a815, type: 3}
-      propertyPath: m_SpawnBounds
-      value: 
-      objectReference: {fileID: 1991063825}
-    - target: {fileID: 4550240872554729659, guid: 69eaf6d587905fa449767746c5a1a815, type: 3}
-      propertyPath: m_LevelManager
-      value: 
-      objectReference: {fileID: 550137499}
-    - target: {fileID: 4550240872554729659, guid: 69eaf6d587905fa449767746c5a1a815, type: 3}
-      propertyPath: m_PowerUps.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4550240872554729659, guid: 69eaf6d587905fa449767746c5a1a815, type: 3}
-      propertyPath: m_PowerUps.Array.data[0]
-      value: 
-      objectReference: {fileID: 1137119286}
     - target: {fileID: 4580090853661799268, guid: 69eaf6d587905fa449767746c5a1a815, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 891390677}
     - target: {fileID: 8861337323680397942, guid: 69eaf6d587905fa449767746c5a1a815, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8861337323680397942, guid: 69eaf6d587905fa449767746c5a1a815, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 26.099998
       objectReference: {fileID: 0}
     - target: {fileID: 8861337323680397942, guid: 69eaf6d587905fa449767746c5a1a815, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4259,10 +4143,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 782520854}
-    - target: {fileID: 8861337324181531609, guid: 69eaf6d587905fa449767746c5a1a815, type: 3}
-      propertyPath: m_SelectedVertices.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8861337324184714716, guid: 69eaf6d587905fa449767746c5a1a815, type: 3}
       propertyPath: m_Mesh
       value: 
