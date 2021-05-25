@@ -35,6 +35,7 @@ public class JumpPowerUp : MonoBehaviour {
         if (m_TimerRunning) { m_Seconds -= Time.smoothDeltaTime; }
         if (m_Seconds >= 0 && m_TimerRunning) {
             m_PlayerController.m_JumpHeight = m_PlayerControllerJumpHeight;
+            //TODO Display on Hud.
             Debug.Log(m_Seconds);
             if (m_Seconds == 0) { m_PlayerController.m_JumpHeight = m_OriginalJumpHighet;
                 m_TimerRunning = false;

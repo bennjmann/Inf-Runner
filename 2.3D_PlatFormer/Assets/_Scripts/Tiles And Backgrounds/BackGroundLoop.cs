@@ -55,17 +55,18 @@ public class BackGroundLoop : MonoBehaviour {
   /// </summary>
   /// <param name="obj"></param>
   void RepositionChildObjects(GameObject obj) {
+    //TODO Fix Tiling 
     Transform[] children = obj.GetComponentsInChildren<Transform>();        // Gets the children's transforms
     if (children.Length > 1) {
       GameObject firstChild = children[1].gameObject;                      // Get the First Child
       GameObject lastChild = children[children.Length - 1].gameObject;    // Gets the last Child
-      float lasteExtentsZ = lastChild.GetComponent<SpriteRenderer>().bounds.extents.z;           
-      float firstExtentsZ = firstChild.GetComponent<SpriteRenderer>().bounds.extents.z;
-      float lastObjectsPosition = lastChild.transform.position.z + lasteExtentsZ;
+      float lastExtentsZ = lastChild.GetComponentInParent<SpriteRenderer>().bounds.extents.z;           
+      float firstExtentsZ = firstChild.GetComponentInParent<SpriteRenderer>().bounds.extents.z;
+      float lastObjectsPosition = lastChild.transform.position.z + lastExtentsZ;
       if (m_Player.transform.position.z + PlayerOffset  > firstChild.transform.position.z + firstExtentsZ) {  // if Player has pass First Child Set it To And as last Position + Offset.
         firstChild.transform.position = new Vector3(lastChild.transform.position.x, lastChild.transform.position.y, lastObjectsPosition += firstExtentsZ);
         firstChild.transform.SetAsLastSibling();
-      } else if (m_Player.transform.position.z - PlayerOffset > lastChild.transform.position.z - lasteExtentsZ) { // last child if player passes Object/Bacground Set as First.
+      } else if (m_Player.transform.position.z - PlayerOffset > lastChild.transform.position.z - lastExtentsZ) { // last child if player passes Object/Bacground Set as First.
         lastChild.transform.SetAsFirstSibling();
       }
       
