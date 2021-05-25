@@ -3,7 +3,47 @@ guid: 12da2bb4183b26e4d90f41be0e3e7769
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: OutSideOfBothRoofWindows
+    second: {fileID: 2100000, guid: ed85b64681cc60549b61f07c77bc8150, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pillars
+    second: {fileID: 2100000, guid: 07e120f62621fef48abeb5a3eee4040e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window
+    second: {fileID: 2100000, guid: 184dbf5cf1bcd3846afafd8c67064b4d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window.001
+    second: {fileID: 2100000, guid: c806f9873b6c0074996ff1520623c217, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window.002
+    second: {fileID: 2100000, guid: 15b6bbb99d2871c41a5c5593d07f1411, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window.003
+    second: {fileID: 2100000, guid: 7bbad8d2140d4f744bf428dd8c2329d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Window.004
+    second: {fileID: 2100000, guid: 3d68ac366f348c04d84d6f762680e8a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hanging Thingie
+    second: {fileID: 2100000, guid: d03f91310f1e83f44912de8e7de279c1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
