@@ -45,7 +45,7 @@ public class BackGroundLoop : MonoBehaviour {
     GameObject c = Instantiate(clone) as GameObject;                  // Clone of Obj to child it.
       c.GetComponent<Renderer>().enabled = true;                     // Renderer For the Original is Disabled, This enables it.
       c.transform.SetParent(m_LevelStart.transform);                                                                         // sets The original obj as parent 
-      c.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y,m_NextSpawnPosition);    // spawn Background at original.x, original.y, m_NextSpawnPosition.
+      c.transform.position = new Vector3(obj.transform.position.x, 5.4f,m_NextSpawnPosition);    // spawn Background at original.x, original.y, m_NextSpawnPosition.
       m_NextSpawnPosition = c.transform.position.z + c.GetComponent<SpriteRenderer>().bounds.extents.z;               // Sets m_NextSpawnPosition to the .z pos + extents.z
       c.name = obj.name + 1;  // Sets child name to numbers obj 1, 2, 3, etc.. 
     

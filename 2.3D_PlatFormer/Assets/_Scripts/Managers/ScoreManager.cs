@@ -12,10 +12,10 @@ public class ScoreManager : MonoBehaviour {
    private GameObject m_Player;    // Used to check if player is alive.
 
    public PlayerController m_CurrentScore;      // This is DistanceTravelled From player Controller used as score.
-   public GameStateManager m_GameManager;
+   public GameManager m_GameManager;
 
    private void Start() {
-      m_GameManager = m_GameManager.GetComponent<GameStateManager>();
+      m_GameManager = m_GameManager.GetComponent<GameManager>();
    }
    private void Update() {
        m_Score.text = "Score:" + (int)m_CurrentScore.m_DistanceTravelledZ; // Updated Text To display Score.

@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     
     private CharacterController m_CharacterController;
     public Animator m_Animator;
-    public GameStateManager m_GameManager;
+    public GameManager m_GameManager;
     
 
     public float m_Gravity = -9.81f;           // Gravity Value.
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
     private void Awake() {
         m_CharacterController = GetComponent<CharacterController>();
         m_Sprint = GetComponent<Sprint>();
-        m_GameManager = m_GameManager.GetComponent<GameStateManager>();
+        m_GameManager = m_GameManager.GetComponent<GameManager>();
         m_Animator = GetComponent<Animator>();
         
     }
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour {
     
     
     private void Update() {
-        if (m_GameManager.State == GameStateManager.GameState.Start) {          //part of animations
+        if (m_GameManager.State == GameManager.GameState.Start) {          //part of animations
             m_Animator.SetBool("isMoving", true);
         }
         Jumping();
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour {
     /// Movement of Player.
     /// </summary>
     private void  Movement() {
-        if (m_GameManager.State == GameStateManager.GameState.Start) {
+        if (m_GameManager.State == GameManager.GameState.Start) {
             m_Vertical = 0f;
             m_ZMoveSpeed = 0f;
         }
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     private void Jumping() {
         m_IsGrounded = m_CharacterController.isGrounded;           // Sets m_IsGrounded to CC.isGrounded Properties
-        if (m_GameManager.State == GameStateManager.GameState.Start) {
+        if (m_GameManager.State == GameManager.GameState.Start) {
             m_Jump = false;
         }
           if ( m_Jump && m_IsGrounded) {
@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     void Animations() {
         // Start
-        if (m_GameManager.State == GameStateManager.GameState.Playing) {
+        if (m_GameManager.State == GameManager.GameState.Playing) {
             m_Animator.SetBool("isMoving", true);
         }
         

@@ -46,6 +46,7 @@ public class LevelManager : MonoBehaviour {
         Transform randomTile = m_TileList[Random.Range(0, m_TileList.Count)];                                            // Picks a Random Transform from RandomTile<List>
         Vector3 tileExtents = randomTile.GetComponentInChildren<MeshRenderer>().bounds.extents;
         m_LastTileEnd.z += tileExtents.z;
+        m_LastTileEnd.y = 0f;
         Transform lastTilePos = SpawnTile(randomTile, m_LastTileEnd);                                                 // Sets SpawnTile Parameters.
         m_LastTileEnd = lastTilePos.Find("EndPosition").position ;                                                   // Finds a new lastPosition.
     }
