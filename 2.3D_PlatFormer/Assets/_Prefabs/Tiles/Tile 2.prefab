@@ -345,6 +345,10 @@ PrefabInstance:
       value: Tunnel
       objectReference: {fileID: 0}
     - target: {fileID: 4355437027624723961, guid: 6006535ea200b2049bc82c757c8cb231, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355437027624723961, guid: 6006535ea200b2049bc82c757c8cb231, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}

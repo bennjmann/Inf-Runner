@@ -3638,7 +3638,7 @@ GameObject:
   - component: {fileID: 8861337323852427064}
   - component: {fileID: 8861337323852427065}
   - component: {fileID: 8861337323852427046}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall MIddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3654,7 +3654,7 @@ Transform:
   m_GameObject: {fileID: 8861337323852427047}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.55, y: 1, z: -4.575}
-  m_LocalScale: {x: 0.5, y: 1, z: 0.25}
+  m_LocalScale: {x: 0.3, y: 1, z: 0.25}
   m_Children: []
   m_Father: {fileID: 1111534825566261115}
   m_RootOrder: 5
@@ -4264,7 +4264,7 @@ GameObject:
   - component: {fileID: 8861337324090558563}
   - component: {fileID: 8861337324090558560}
   - component: {fileID: 8861337324090558561}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Left Ramp Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4577,7 +4577,7 @@ GameObject:
   - component: {fileID: 8861337324181531590}
   - component: {fileID: 8861337324181531591}
   - component: {fileID: 8861337324181531588}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4593,7 +4593,7 @@ Transform:
   m_GameObject: {fileID: 8861337324181531589}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.75, y: 1, z: -3.275}
-  m_LocalScale: {x: 0.5, y: 1, z: 0.25}
+  m_LocalScale: {x: 0.3, y: 1, z: 0.25}
   m_Children: []
   m_Father: {fileID: 1111534825566261115}
   m_RootOrder: 4
@@ -5203,7 +5203,7 @@ GameObject:
   - component: {fileID: 8861337324668050194}
   - component: {fileID: 8861337324668050195}
   - component: {fileID: 8861337324668050192}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5219,7 +5219,7 @@ Transform:
   m_GameObject: {fileID: 8861337324668050193}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.65, y: 1, z: -3.275}
-  m_LocalScale: {x: 0.5, y: 1, z: 0.25}
+  m_LocalScale: {x: 0.3, y: 1, z: 0.25}
   m_Children: []
   m_Father: {fileID: 1111534825566261115}
   m_RootOrder: 3

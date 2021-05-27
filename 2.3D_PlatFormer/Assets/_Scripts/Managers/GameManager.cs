@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour {
 
 
     // Text.
+    public Canvas m_DeathScreen;
     public TextMeshProUGUI m_ScoreText;
     
     
@@ -41,7 +43,7 @@ public class GameManager : MonoBehaviour {
 
     private void Awake() {
         m_Player.SetActive(false);
-        m_ScoreText.gameObject.SetActive(false);
+        m_ScoreText.gameObject.SetActive(true);
         m_GameState = GameState.Start;
 
 
@@ -54,10 +56,10 @@ public class GameManager : MonoBehaviour {
                     m_GameState = GameState.Playing;
                 break;
             case GameState.Playing:
-                m_ScoreText.gameObject.SetActive(true);
                 m_Player.SetActive(true);
-                if (PlayerDead()) {
-                m_GameState = GameState.GameOver;
+                if (m_Player.GetComponent<PlayerController>().m_IsDead == true) {
+                    PlayerDead();
+                     m_GameState = GameState.GameOver;
             }
                 if (Input.GetKeyDown(KeyCode.R)) {
                     Scene scene = SceneManager.GetActiveScene();
@@ -66,8 +68,9 @@ public class GameManager : MonoBehaviour {
 
                 break;
             case GameState.GameOver:
-                
-                
+                m_ScoreText.gameObject.SetActive(true);
+
+
                 if (Input.GetKeyDown(KeyCode.R)) {
                     Scene scene = SceneManager.GetActiveScene();
                     SceneManager.LoadScene(scene.name);
@@ -83,15 +86,23 @@ public class GameManager : MonoBehaviour {
     /// Checks if Players dead.
     /// </summary>
     /// <returns></returns>
-    private bool PlayerDead() {
-        if (m_Player.transform.position.y <= -8f) {
-            m_Player.SetActive(false);
-            Camera cam = m_Player.GetComponentInChildren<Camera>();
-            cam.transform.parent = null;
-            return true;
-        }
-        return false;
+    public void PlayerDead() {
+        m_Player.SetActive(false);
+        Camera cam = m_Player.GetComponentInChildren<Camera>();
+        cam.transform.parent = null;
+        cam.gameObject.SetActive(true);
+        m_DeathScreen.gameObject.SetActive(true);
     }
 
+    
+    /// <summary>
+    /// Calls Load scene MainMenu.
+    /// </summary>
+    public void MainMenu() { SceneManager.LoadScene("MainMenu"); }
+    /// <summary>
+    /// Loads "GamePlay" Scene.
+    /// </summary>
+    void Restart() { SceneManager.LoadScene("GamePlay");}
 }
+
 

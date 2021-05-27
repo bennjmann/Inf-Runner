@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour {
     public float m_XMoveSpeed = 5f;             // Vertical Speed.
     private float m_Vertical;                  // Vertical Movement Key Input.
 
+    public bool m_IsDead;                       // If the player is dead.
+
 
     private Vector3 m_PlayerVelocity;          // Players Velocity (Being used for Gravity).
     
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Start() {
+        m_IsDead = false;
         m_ZMoveSpeed = 0f;
         m_LastPos = transform.position;       // Sets LastPos To Starting Position.
     }
@@ -47,6 +50,10 @@ public class PlayerController : MonoBehaviour {
         if (m_GameManager.State == GameManager.GameState.Start) {          //part of animations
             m_Animator.SetBool("isMoving", true);
         }
+        if (transform.position.y <= -8f) {
+            m_IsDead = true;
+        }
+        
         Jumping();
         Inputs();
         DistanceTraveled();
@@ -75,6 +82,8 @@ public class PlayerController : MonoBehaviour {
     /// Handles Jumping For the player.
     /// </summary>
     private void Jumping() {
+        //TODO ADD HANG TIME.
+
         m_IsGrounded = m_CharacterController.isGrounded;           // Sets m_IsGrounded to CC.isGrounded Properties
         if (m_GameManager.State == GameManager.GameState.Start) {
             m_Jump = false;
@@ -101,8 +110,9 @@ public class PlayerController : MonoBehaviour {
 /// </summary>
 /// <param name="hit"></param>
     private void OnControllerColliderHit(ControllerColliderHit hit) {
+    // If player hits layer Disables gameobject.
         if (hit.gameObject.layer == LayerMask.NameToLayer("KillLayer")) {
-            Destroy(gameObject);
+            m_IsDead = true;
         }
     }
     

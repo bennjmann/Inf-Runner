@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class KillSelf : MonoBehaviour
 {
-    float Timer = 60f;
-
     private void Update() {
         StartCoroutine(KilSelf());
     }
