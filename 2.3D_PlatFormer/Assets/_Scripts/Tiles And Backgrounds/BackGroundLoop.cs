@@ -64,7 +64,7 @@ public class BackGroundLoop : MonoBehaviour {
       float firstExtentsZ = firstChild.GetComponentInParent<SpriteRenderer>().bounds.extents.z;
       float lastObjectsPosition = lastChild.transform.position.z + lastExtentsZ;
       if (m_Player.transform.position.z + PlayerOffset  > firstChild.transform.position.z + firstExtentsZ) {  // if Player has pass First Child Set it To And as last Position + Offset.
-        firstChild.transform.position = new Vector3(lastChild.transform.position.x, 5.67f, lastObjectsPosition += firstExtentsZ);
+        firstChild.transform.position = new Vector3(lastChild.transform.position.x, 5.6f, lastObjectsPosition += firstExtentsZ);
         firstChild.transform.SetAsLastSibling();
         Debug.Log("SetLast");
       } else if (m_Player.transform.position.z - PlayerOffset > lastChild.transform.position.z - lastExtentsZ) { // last child if player passes Object/Bacground Set as First.

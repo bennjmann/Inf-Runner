@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     
     private CharacterController m_CharacterController;
     public Animator m_Animator;
-    public GameManager m_GameManager;
+    public GameStateManager m_GameManager;
     
 
     public float m_Gravity = -9.81f;           // Gravity Value.
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
     private void Awake() {
         m_CharacterController = GetComponent<CharacterController>();
         m_Sprint = GetComponent<Sprint>();
-        m_GameManager = m_GameManager.GetComponent<GameManager>();
+        m_GameManager = m_GameManager.GetComponent<GameStateManager>();
         m_Animator = GetComponent<Animator>();
         
     }
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour {
     
     
     private void Update() {
-        if (m_GameManager.State == GameManager.GameState.Start || m_GameManager.State == GameManager.GameState.MainMenu) {
+        if (m_GameManager.State == GameStateManager.GameState.Start) {          //part of animations
             m_Animator.SetBool("isMoving", true);
         }
         Jumping();
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour {
     /// Movement of Player.
     /// </summary>
     private void  Movement() {
-        if (m_GameManager.State == GameManager.GameState.Start || m_GameManager.State == GameManager.GameState.MainMenu) {
+        if (m_GameManager.State == GameStateManager.GameState.Start) {
             m_Vertical = 0f;
             m_ZMoveSpeed = 0f;
         }
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour {
     /// </summary>
     private void Jumping() {
         m_IsGrounded = m_CharacterController.isGrounded;           // Sets m_IsGrounded to CC.isGrounded Properties
-        if (m_GameManager.State == GameManager.GameState.Start || m_GameManager.State == GameManager.GameState.MainMenu) {
+        if (m_GameManager.State == GameStateManager.GameState.Start) {
             m_Jump = false;
         }
           if ( m_Jump && m_IsGrounded) {
@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviour {
             m_PlayerVelocity += Vector3.up * (m_Gravity * (m_fallMultiplier - 1) * Time.deltaTime);                       // Used to fall Faster by adding the fall multiplier to the downforces.
         }  if (m_IsGrounded && m_PlayerVelocity.y < 0) {                                                             // Ask if grounded and Velocity.y < 0.
               m_PlayerVelocity.y = 0f;                                                                                  // Sets Player's Velocity.y to 0 When Grounded.else 
-          }
+          } 
         
     }
     /// <summary>
@@ -96,7 +96,10 @@ public class PlayerController : MonoBehaviour {
         m_Vertical = Input.GetAxis("Vertical");         // Movement Keys.
         m_Jump = Input.GetButtonDown("Jump");          // Jump Keys.
     }
-
+/// <summary>
+/// Kills Player if Controller Moves into Hit Object With Tag KillLayer.
+/// </summary>
+/// <param name="hit"></param>
     private void OnControllerColliderHit(ControllerColliderHit hit) {
         if (hit.gameObject.layer == LayerMask.NameToLayer("KillLayer")) {
             Destroy(gameObject);
@@ -106,8 +109,9 @@ public class PlayerController : MonoBehaviour {
     /// <summary>
     /// Distance Player has Traveled, Basically the score.
     /// </summary>
-    private void DistanceTraveled() {
-        if (Input.GetAxisRaw("Sprint") == 1 && m_Sprint.m_IsSprinting == true) {                    // If Sprinting.
+    private void DistanceTraveled() { 
+        // Calculates Score By distance Traveled in the z.
+        if (Input.GetAxisRaw("Sprint") == 1 && m_Sprint.m_IsSprinting == true) {                    
             Vector3 distanceVector = transform.position - m_LastPos;  
             float DistanceThisFrame = distanceVector.z * 2;
             m_DistanceTravelledZ += DistanceThisFrame;
@@ -120,10 +124,12 @@ public class PlayerController : MonoBehaviour {
             m_LastPos = transform.position;
         }
     }
-    
+    /// <summary>
+    /// If Player is Doing actions then Do Animation.
+    /// </summary>
     void Animations() {
         // Start
-        if (m_GameManager.State == GameManager.GameState.Playing) {
+        if (m_GameManager.State == GameStateManager.GameState.Playing) {
             m_Animator.SetBool("isMoving", true);
         }
         
