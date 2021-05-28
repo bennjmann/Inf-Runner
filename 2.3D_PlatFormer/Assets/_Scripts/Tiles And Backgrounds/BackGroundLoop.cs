@@ -55,7 +55,6 @@ public class BackGroundLoop : MonoBehaviour {
   /// </summary>
   /// <param name="obj"></param>
   void RepositionChildObjects(GameObject obj) {
-    //TODO Fixed?
     Transform[] children = obj.GetComponentsInChildren<Transform>();        // Gets the children's transforms
     if (children.Length > 1) {
       GameObject firstChild = children[1].gameObject;                      // Get the First Child

@@ -1347,7 +1347,7 @@ MonoBehaviour:
   m_Gravity: -9.81
   m_IsGrounded: 0
   m_fallMultiplier: 3
-  m_JumpHeight: 0.6
+  m_JumpHeight: 0.4
   m_ZMoveSpeed: 5.5
   m_XMoveSpeed: 7
   m_IsDead: 0
@@ -1441,7 +1441,7 @@ PrefabInstance:
     - target: {fileID: -8945070098837960407, guid: e73f9e6486149024fab737600dc1a39d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f5d8018b3608292438031614ce0d4cfd, type: 2}
+      objectReference: {fileID: 2100000, guid: bf2c39834ba91e64c8556f2c1ad846f8, type: 2}
     - target: {fileID: -8679921383154817045, guid: e73f9e6486149024fab737600dc1a39d, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1498,10 +1498,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -993129979837269878, guid: e73f9e6486149024fab737600dc1a39d, type: 3}
+    - target: {fileID: -6268238552560437597, guid: e73f9e6486149024fab737600dc1a39d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f5d8018b3608292438031614ce0d4cfd, type: 2}
+    - target: {fileID: -4396642182433536433, guid: e73f9e6486149024fab737600dc1a39d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bf2c39834ba91e64c8556f2c1ad846f8, type: 2}
+    - target: {fileID: -1206874426333947015, guid: e73f9e6486149024fab737600dc1a39d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bf2c39834ba91e64c8556f2c1ad846f8, type: 2}
+    - target: {fileID: -993129979837269878, guid: e73f9e6486149024fab737600dc1a39d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f5ba026102a93d840ad6d5f36f0e7985, type: 2}
+    - target: {fileID: 243041194690276544, guid: e73f9e6486149024fab737600dc1a39d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e73f9e6486149024fab737600dc1a39d, type: 3}
       propertyPath: m_Name
       value: Player
