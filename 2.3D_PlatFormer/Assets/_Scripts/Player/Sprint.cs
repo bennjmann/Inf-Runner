@@ -16,6 +16,7 @@ public class Sprint : MonoBehaviour {
     private float m_Sprint;                     // Sprint Key Input.
     
     public bool m_IsSprinting;
+    private bool SpeedControl;
     
 
 
@@ -38,9 +39,21 @@ public class Sprint : MonoBehaviour {
             m_PlayerSpeed.m_ZMoveSpeed -= m_SprintAccDown * Time.deltaTime;   // Slowly DeAccelerate.
             m_IsSprinting = false;
         }
+        // Increases the speed if Score = a Division of 100( Speed controller stops from Appending more then once due to Converting a float to a int).
+        if (((int)m_PlayerSpeed.m_DistanceTravelledZ % 100) == 0 && m_PlayerSpeed.m_DistanceTravelledZ != 0 && SpeedControl == true) {
+            m_BaseZMoveSpeed += 0.5f;
+            m_PlayerSpeed.m_ZMoveSpeed += 0.5f;
+            m_PlayerSpeed.m_XMoveSpeed += 0.25f;
+            SpeedControl = false;
+        } 
     }
 
     private void Update() {
+        if (((int)m_PlayerSpeed.m_DistanceTravelledZ % 100) != 0) {     // So speed Updates once.
+            SpeedControl = true;
+        }
+        
+        
         m_Sprint = Input.GetAxis("Sprint");                                      // Sprint Keys.
     }
 }

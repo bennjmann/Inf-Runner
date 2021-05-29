@@ -565,7 +565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b78d21b7b34a124db641a1108d4cc7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MainCamera: {fileID: 1638020398}
   m_DeathScreen: {fileID: 609918999}
   m_ScoreText: {fileID: 231493928}
   m_Player: {fileID: 1225268591}
@@ -913,6 +912,7 @@ MonoBehaviour:
   m_TileList:
   - {fileID: 8861337323680397942, guid: 69eaf6d587905fa449767746c5a1a815, type: 3}
   - {fileID: 1030173985229127352, guid: e4145367b66edc94194f75f3f1cb7c4d, type: 3}
+  - {fileID: 5597919800913248935, guid: 5cdd026bfb246504db0012c9e020ce4d, type: 3}
   - {fileID: 1161940031604722879, guid: fbd36c1c6f23c4b4cb2eecfb98c86145, type: 3}
   m_powerUp: {fileID: 0}
   m_Player: {fileID: 1225268591}
