@@ -145,14 +145,14 @@ public class PlayerController : MonoBehaviour {
         
         
         // Falling
-        if (m_IsGrounded) {
-            m_Animator.SetBool("isFalling", false);
-        } else if (m_PlayerVelocity.y < 0) m_Animator.SetBool("isFalling", true);
+        // if (m_IsGrounded) {
+        //     m_Animator.SetBool("isFalling", false);
+        // } else if (m_PlayerVelocity.y < 0) m_Animator.SetBool("isFalling", true);
         
         // Jumping
-        if (m_Jump && m_IsGrounded) {
-            m_Animator.SetBool("isJumping", true);
-        } else m_Animator.SetBool("isJumping", false);
+        // if (m_Jump && m_IsGrounded) {
+        //     m_Animator.SetBool("isJumping", true);
+        // } else m_Animator.SetBool("isJumping", false);
         
         // Sprinting
         if (m_Sprint.m_IsSprinting == true) {                               

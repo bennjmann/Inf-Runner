@@ -42,8 +42,8 @@ public class Sprint : MonoBehaviour {
         // Increases the speed if Score = a Division of 100( Speed controller stops from Appending more then once due to Converting a float to a int).
         if (((int)m_PlayerSpeed.m_DistanceTravelledZ % 100) == 0 && m_PlayerSpeed.m_DistanceTravelledZ != 0 && SpeedControl == true) {
             m_BaseZMoveSpeed += 0.5f;
-            m_PlayerSpeed.m_ZMoveSpeed += 0.5f;
-            m_PlayerSpeed.m_XMoveSpeed += 0.25f;
+            m_PlayerSpeed.m_ZMoveSpeed += 1.0f;
+            m_PlayerSpeed.m_XMoveSpeed += 0.5f;
             SpeedControl = false;
         } 
     }
