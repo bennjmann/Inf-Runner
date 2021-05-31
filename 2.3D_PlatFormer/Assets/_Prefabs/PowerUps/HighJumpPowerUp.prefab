@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Seconds: 30
+  m_textPrefab: {fileID: 8330157552673663464, guid: 129f4005f3eca6e42bfc660d833f75b7, type: 3}
 --- !u!1001 &3973483894443965104
 PrefabInstance:
   m_ObjectHideFlags: 0

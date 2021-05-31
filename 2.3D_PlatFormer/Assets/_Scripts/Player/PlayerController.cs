@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
     private CharacterController m_CharacterController;
     public Animator m_Animator;
     public GameManager m_GameManager;
-    
+
 
     public float m_Gravity = -9.81f;           // Gravity Value.
 
@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour {
     
     public float m_DistanceTravelledZ;           // Distance Traveled Use for score.
     private Vector3 m_LastPos;                 // Last Position Used for score. 
+    
 
     private void Awake() {
         m_CharacterController = GetComponent<CharacterController>();
