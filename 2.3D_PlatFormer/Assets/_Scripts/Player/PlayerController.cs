@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour {
         if (transform.position.y <= -8f) {
             m_IsDead = true;
         }
+        m_Animator.SetBool("isGrounded", m_IsGrounded);
         
         Jumping();
         Inputs();
@@ -143,17 +144,11 @@ public class PlayerController : MonoBehaviour {
         if (m_GameManager.State == GameManager.GameState.Playing) {
             m_Animator.SetBool("isMoving", true);
         }
-        
-        
-        // Falling
-        // if (m_IsGrounded) {
-        //     m_Animator.SetBool("isFalling", false);
-        // } else if (m_PlayerVelocity.y < 0) m_Animator.SetBool("isFalling", true);
-        
+
         // Jumping
-        // if (m_Jump && m_IsGrounded) {
-        //     m_Animator.SetBool("isJumping", true);
-        // } else m_Animator.SetBool("isJumping", false);
+        if (m_Jump) {
+             m_Animator.SetBool("isJumping", true);
+        } else m_Animator.SetBool("isJumping", false);
         
         // Sprinting
         if (m_Sprint.m_IsSprinting == true) {                               
