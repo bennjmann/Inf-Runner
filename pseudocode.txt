@@ -6,7 +6,7 @@ OnEnable/Start :
 	For number of (Background) :
 	    exent of Next to Spawn/currently spawning background.
 	    If (Check if 1st Background) NextSpawnPosition = 0
-	    else current NextSpawnPosition = exent of Next to Spawn/currently spawning background.
+	    else current NextSpawnPosition = extent of currently spawning background.
 	    NextSpawnPosition += Old Childed Extent And Transfrom Position
 	    Spawn Background
 	    set backgrounds position to Current Position z,y. z = Spawn Position.

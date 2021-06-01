@@ -22,8 +22,8 @@ public class Sprint : MonoBehaviour {
     public float m_ZSprintAccDown;                // Speed At which you Lose Acc To min/Base.
     public float m_ZSpeedGain = 2f;                  // The Gain at which X Gains Ever time score is  a Division 100
     public float m_XSpeedGain = 1f;                 // The Gain at which X Gains Ever time score is  a Division 100
-    public float m_XSpeedLost = 1.3f;              // The Amount of speed lost in the x when sprinting in the z. Good to keep this between 1 to 1.5;
-    
+    public float m_XSpeedLost = 1.3f;              // The Amount of speed lost in the x when sprinting in the z.
+
 
     private float m_Sprint;                     // Sprint Key Input.
     
@@ -48,12 +48,12 @@ public class Sprint : MonoBehaviour {
         // If Sprint Buttons Down and Current speed is not = Max sprint speed.
         if (m_Sprint > 0 && m_PlayerSpeed.m_ZMoveSpeed < m_ZWithSprintSpeed && m_Slider.value < m_Slider.maxValue) {  
             m_PlayerSpeed.m_ZMoveSpeed += m_ZSprintAccUP * Time.smoothDeltaTime;                                 //  Accelerate.
-            m_PlayerSpeed.m_XMoveSpeed -= m_BaseZMoveSpeed * 1.3f * Time.smoothDeltaTime;
+            m_PlayerSpeed.m_XMoveSpeed -= m_BaseZMoveSpeed * m_XSpeedLost * Time.smoothDeltaTime;
 
         } else if (m_Sprint == 1) {                                                                      // If Only sprint Key is being held.
             m_IsSprinting = true;
         } if (m_Sprint == 0 && m_PlayerSpeed.m_ZMoveSpeed > m_BaseZMoveSpeed) {        
-            m_PlayerSpeed.m_XMoveSpeed += m_BaseZMoveSpeed * 1.3f * Time.smoothDeltaTime;
+            m_PlayerSpeed.m_XMoveSpeed += m_BaseZMoveSpeed * m_XSpeedLost * Time.smoothDeltaTime;
             m_PlayerSpeed.m_ZMoveSpeed -= m_ZSprintAccDown * Time.smoothDeltaTime;                 // Slowly DeAccelerate.
             m_IsSprinting = false;
         }
