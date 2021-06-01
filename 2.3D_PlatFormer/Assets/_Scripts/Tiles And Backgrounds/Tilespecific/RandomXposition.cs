@@ -5,18 +5,15 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class RandomXPosition : MonoBehaviour {
-    public List<GameObject> m_Object;
+    public GameObject[] m_Object;
     private void Start() {
-        foreach (GameObject trans in m_Object) {
-            float random = Random.Range(-12.4f, 11.4f);
-            Vector3 transformPosition = trans.transform.localPosition;
-            transformPosition.x = random;
-            Debug.Log(transformPosition);
+        int numberOfObj = 0;
+        foreach (GameObject GameObj in m_Object) {
+            float random = Random.Range(-11.25f, 11.4f);
+            m_Object[numberOfObj].transform.position = new Vector3(random, m_Object[numberOfObj].transform.position.y, m_Object[numberOfObj].transform.position.z);
+            Debug.Log(m_Object[numberOfObj].transform.position);
+            numberOfObj++;
         }
-        
     }
-
-
-
 }
 
