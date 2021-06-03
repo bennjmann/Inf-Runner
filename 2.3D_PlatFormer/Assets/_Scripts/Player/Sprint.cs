@@ -13,22 +13,24 @@ public class Sprint : MonoBehaviour {
     
     [SerializeField] 
     private float m_ZWithSprintSpeed;                   // Base speed + sprint Max.
+    private float m_xWithLeastSpeed;
     [SerializeField]
     float m_NewPlayerXSpeed;                          // Base speed of x / 2. 
     
-    public float m_SprintGain = 2.5f;
+    public float m_SprintGainXLost = 2.5f;
     public float m_MaxSprint = 10f;                // Max Speed of the sprint.
     public float m_ZSprintAccUP;                   // Speed At which you gain Acc To max.
     public float m_ZSprintAccDown;                // Speed At which you Lose Acc To min/Base.
     public float m_ZSpeedGain = 2f;                  // The Gain at which X Gains Ever time score is  a Division 100
     public float m_XSpeedGain = 1f;                 // The Gain at which X Gains Ever time score is  a Division 100
-    public float m_XSpeedLost = 1.3f;              // The Amount of speed lost in the x when sprinting in the z.
-
+    public float m_XLeast = 6f;
 
     private float m_Sprint;                     // Sprint Key Input.
     
     private bool SpeedControl;              // used so it doesnt add speed more the once when needed.
     public bool m_IsSprinting;             // Check if Sprinting.    
+    
+
 
     private void Start() {
         m_IsSprinting = false;
@@ -44,17 +46,23 @@ public class Sprint : MonoBehaviour {
     private void FixedUpdate() {
         m_Sprint = Input.GetAxis("Sprint"); // Sprint Key.
         m_ZWithSprintSpeed = m_BaseZMoveSpeed + m_MaxSprint;                                       // Sets the max Sprint Speed.
-
+        m_xWithLeastSpeed = m_OriginalXSpeed / 3 ;
+        
         // If Sprint Buttons Down and Current speed is not = Max sprint speed.
         if (m_Sprint > 0 && m_PlayerSpeed.m_ZMoveSpeed < m_ZWithSprintSpeed) {  
             m_PlayerSpeed.m_ZMoveSpeed += m_ZSprintAccUP * Time.smoothDeltaTime;                                 //  Z Acceleration.
-            m_PlayerSpeed.m_XMoveSpeed -= m_MaxSprint * m_XSpeedLost * Time.smoothDeltaTime;               // X Deceleration     
-
-        }  if (m_Sprint < 1 && m_PlayerSpeed.m_ZMoveSpeed > m_BaseZMoveSpeed) {        
-            m_PlayerSpeed.m_XMoveSpeed += m_MaxSprint * m_XSpeedLost * Time.smoothDeltaTime;  // X Acceleration
+        } else if (m_Sprint < 1 && m_PlayerSpeed.m_ZMoveSpeed > m_BaseZMoveSpeed) {
             m_PlayerSpeed.m_ZMoveSpeed -= m_ZSprintAccDown * Time.smoothDeltaTime;                 // Z Deceleration.
             m_IsSprinting = false;
-        } else if (m_Slider.value == m_Slider.minValue && m_Sprint == 0) {
+        }
+        
+        if (m_Sprint > 0 && m_PlayerSpeed.m_XMoveSpeed > m_xWithLeastSpeed) {
+            m_PlayerSpeed.m_XMoveSpeed -= 0.5f * Time.deltaTime;
+        } else if (m_Sprint < 1 && m_PlayerSpeed.m_XMoveSpeed < m_OriginalXSpeed) {
+            m_PlayerSpeed.m_XMoveSpeed += 0.5f * Time.deltaTime;
+        }
+        
+        if (m_Slider.value == m_Slider.minValue && m_Sprint == 0) {
             m_PlayerSpeed.m_XMoveSpeed = m_OriginalXSpeed;                      // if not pressing sprint set to the base speed;
             m_PlayerSpeed.m_ZMoveSpeed = m_BaseZMoveSpeed;
         } 
@@ -67,7 +75,8 @@ public class Sprint : MonoBehaviour {
         
         // Increases the speed if Score = a Division of 100 That = 0 ( Speed controller stops from Appending more then once due to Converting a float to a int).
          if (((int)m_PlayerSpeed.m_DistanceTravelledZ % 100) == 0 && m_PlayerSpeed.m_DistanceTravelledZ != 0 && SpeedControl == true) {
-             m_MaxSprint += m_SprintGain;
+             m_MaxSprint += m_SprintGainXLost;
+             m_XLeast += m_SprintGainXLost;
              m_BaseZMoveSpeed += m_ZSpeedGain;
              m_PlayerSpeed.m_ZMoveSpeed += m_ZSpeedGain;
              m_PlayerSpeed.m_XMoveSpeed += m_XSpeedGain;
