@@ -1,35 +1,34 @@
 BackGround Loop.
 
+Doesnt include Randomised Stuff was added after this was made.
 
-
+	To Spawn first backgrounds.
 OnEnable/Start :
 	For number of (Background) :
 	    exent of Next to Spawn/currently spawning background.
 	    If (Check if 1st Background) NextSpawnPosition = 0
-	    else current NextSpawnPosition = extent of currently spawning background.
+	    else {current NextSpawnPosition = extent of currently spawning background}.
 	    NextSpawnPosition += Old Childed Extent And Transfrom Position
 	    Spawn Background
-	    set backgrounds position to Current Position z,y. z = Spawn Position.
+	    set backgrounds position to Current Position z, y, z =  NextSpawnPosition.
 	    Get old Background extent + Transfrom.
-	
 	    : End
 	    
 	: End
 	
-LateUpdate : 
-    For Every Background Spawned :
+	To Recycle backgrounds.  first and last Means if you have a line. First => ---- <== Last.
+ LateUpdate : 
         Check For 1st Background Spawned.
         Check for last Background Spawned.
         Get Extents for first Background.
-        Get extents for last background
+        Get Extents for last background
         Add last background position and Extent. 
         If (Player is Close to Last Background)
             set the first backgrounds Spawned to The position of the last one +  its extents And the extents of itself.
             Then set as Last
              :End Else If (Player is passed Or not close to First Background)
                         Set it as last.
-                        :End
-                :End
+                  :End
            End
         
 	

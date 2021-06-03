@@ -47,21 +47,22 @@ public class Sprint : MonoBehaviour {
 
         // If Sprint Buttons Down and Current speed is not = Max sprint speed.
         if (m_Sprint > 0 && m_PlayerSpeed.m_ZMoveSpeed < m_ZWithSprintSpeed && m_Slider.value < m_Slider.maxValue) {  
-            m_PlayerSpeed.m_ZMoveSpeed += m_ZSprintAccUP * Time.smoothDeltaTime;                                 //  Accelerate.
-            m_PlayerSpeed.m_XMoveSpeed -= m_BaseZMoveSpeed * m_XSpeedLost * Time.smoothDeltaTime;
+            m_PlayerSpeed.m_ZMoveSpeed += m_ZSprintAccUP * Time.smoothDeltaTime;                                 //  Z Acceleration.
+            m_PlayerSpeed.m_XMoveSpeed -= m_BaseZMoveSpeed * m_XSpeedLost * Time.smoothDeltaTime;               // X Deceleration     
 
-        } else if (m_Sprint == 1) {                                                                      // If Only sprint Key is being held.
+        } else if (m_Sprint == 1) {                                                                      
             m_IsSprinting = true;
         } if (m_Sprint == 0 && m_PlayerSpeed.m_ZMoveSpeed > m_BaseZMoveSpeed) {        
-            m_PlayerSpeed.m_XMoveSpeed += m_BaseZMoveSpeed * m_XSpeedLost * Time.smoothDeltaTime;
-            m_PlayerSpeed.m_ZMoveSpeed -= m_ZSprintAccDown * Time.smoothDeltaTime;                 // Slowly DeAccelerate.
+            m_PlayerSpeed.m_XMoveSpeed += m_BaseZMoveSpeed * m_XSpeedLost * Time.smoothDeltaTime;  // X Acceleration
+            m_PlayerSpeed.m_ZMoveSpeed -= m_ZSprintAccDown * Time.smoothDeltaTime;                 // Z Deceleration.
             m_IsSprinting = false;
         }
         else if (m_Slider.value == m_Slider.minValue && m_Sprint == 0) {
-            m_PlayerSpeed.m_XMoveSpeed = m_OriginalXSpeed;
+            m_PlayerSpeed.m_XMoveSpeed = m_OriginalXSpeed;                      // if not pressing sprint set to the base speed;
+            m_PlayerSpeed.m_ZMoveSpeed = m_BaseZMoveSpeed;
         }
 
-        m_Slider.value = m_PlayerSpeed.m_ZMoveSpeed - m_BaseZMoveSpeed;
+        m_Slider.value = m_PlayerSpeed.m_ZMoveSpeed - m_BaseZMoveSpeed;             // slider shows sprint.
         
         
         // Increases the speed if Score = a Division of 100 That = 0 ( Speed controller stops from Appending more then once due to Converting a float to a int).

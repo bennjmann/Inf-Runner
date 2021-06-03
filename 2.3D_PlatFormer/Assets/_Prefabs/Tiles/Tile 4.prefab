@@ -1656,10 +1656,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4532789175556799543}
-  - component: {fileID: 3216940137121423098}
   m_Layer: 0
   m_Name: Tile 4
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1685,18 +1684,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3216940137121423098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4532789175556799528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a21a82d1d664d244b7d256f4251a6ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4769507307970175920
 GameObject:
   m_ObjectHideFlags: 0
