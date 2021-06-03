@@ -25,7 +25,7 @@ public class Sprint : MonoBehaviour {
     public float m_XSpeedGain = 1f;                 // The Gain at which X Gains Ever time score is  a Division 100
     public float m_XLeast = 6f;
 
-    private float m_Sprint;                     // Sprint Key Input.
+    public bool m_Sprint;                     // Sprint Key Input.
     
     private bool SpeedControl;              // used so it doesnt add speed more the once when needed.
     public bool m_IsSprinting;             // Check if Sprinting.    
@@ -44,25 +44,24 @@ public class Sprint : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        m_Sprint = Input.GetAxis("Sprint"); // Sprint Key.
         m_ZWithSprintSpeed = m_BaseZMoveSpeed + m_MaxSprint;                                       // Sets the max Sprint Speed.
         m_xWithLeastSpeed = m_OriginalXSpeed / 3 ;
         
         // If Sprint Buttons Down and Current speed is not = Max sprint speed.
-        if (m_Sprint > 0 && m_PlayerSpeed.m_ZMoveSpeed < m_ZWithSprintSpeed) {  
+        if (m_Sprint == true && m_PlayerSpeed.m_ZMoveSpeed < m_ZWithSprintSpeed) {  
             m_PlayerSpeed.m_ZMoveSpeed += m_ZSprintAccUP * Time.smoothDeltaTime;                                 //  Z Acceleration.
-        } else if (m_Sprint < 1 && m_PlayerSpeed.m_ZMoveSpeed > m_BaseZMoveSpeed) {
+        } else if (m_Sprint == false && m_PlayerSpeed.m_ZMoveSpeed > m_BaseZMoveSpeed) {
             m_PlayerSpeed.m_ZMoveSpeed -= m_ZSprintAccDown * Time.smoothDeltaTime;                 // Z Deceleration.
             m_IsSprinting = false;
         }
         
-        if (m_Sprint > 0 && m_PlayerSpeed.m_XMoveSpeed > m_xWithLeastSpeed) {
-            m_PlayerSpeed.m_XMoveSpeed -= 0.5f * Time.deltaTime;
-        } else if (m_Sprint < 1 && m_PlayerSpeed.m_XMoveSpeed < m_OriginalXSpeed) {
-            m_PlayerSpeed.m_XMoveSpeed += 0.5f * Time.deltaTime;
+        if (m_Sprint == true && m_PlayerSpeed.m_XMoveSpeed > m_xWithLeastSpeed && m_Slider.value != m_Slider.maxValue) {
+            m_PlayerSpeed.m_XMoveSpeed -= 0.5f * Time.smoothDeltaTime;
+        } else if (m_Sprint == false && m_PlayerSpeed.m_XMoveSpeed < m_OriginalXSpeed) {
+            m_PlayerSpeed.m_XMoveSpeed += 0.5f * Time.smoothDeltaTime;
         }
-        
-        if (m_Slider.value == m_Slider.minValue && m_Sprint == 0) {
+        Debug.Log(m_PlayerSpeed.m_XMoveSpeed);
+        if (m_Slider.value == m_Slider.minValue && m_Sprint == false) {
             m_PlayerSpeed.m_XMoveSpeed = m_OriginalXSpeed;                      // if not pressing sprint set to the base speed;
             m_PlayerSpeed.m_ZMoveSpeed = m_BaseZMoveSpeed;
         } 
@@ -89,5 +88,6 @@ public class Sprint : MonoBehaviour {
         if (((int)m_PlayerSpeed.m_DistanceTravelledZ % 100) != 0) {     // So speed Updates once.
             SpeedControl = true;
         }
+        m_Sprint = Input.GetButton("Sprint"); // Sprint Key.
     }
 }
