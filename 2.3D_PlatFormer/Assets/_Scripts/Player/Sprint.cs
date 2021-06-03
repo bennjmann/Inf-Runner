@@ -33,10 +33,10 @@ public class Sprint : MonoBehaviour {
 
 
     private void Start() {
+        m_Slider.maxValue = m_MaxSprint;
         m_IsSprinting = false;
         m_Slider =  m_Slider.GetComponent<UnityEngine.UI.Slider>();        // Grabs slider from m_sprintSlider.
         m_PlayerSpeed = GetComponent<PlayerController>();                       // Grabs the Float from PlayerController script.
-        m_Slider.maxValue = m_MaxSprint;
         // Sets the Base speeds.
         m_PlayerSpeed.m_ZMoveSpeed = m_BaseZMoveSpeed;        
         m_OriginalXSpeed = m_PlayerSpeed.m_XMoveSpeed;
@@ -45,7 +45,7 @@ public class Sprint : MonoBehaviour {
 
     private void FixedUpdate() {
         m_ZWithSprintSpeed = m_BaseZMoveSpeed + m_MaxSprint;                                       // Sets the max Sprint Speed.
-        m_xWithLeastSpeed = m_OriginalXSpeed / 3 ;
+        m_xWithLeastSpeed = m_OriginalXSpeed / 4 ;
         
         // If Sprint Buttons Down and Current speed is not = Max sprint speed.
         if (m_Sprint == true && m_PlayerSpeed.m_ZMoveSpeed < m_ZWithSprintSpeed) {  
@@ -74,7 +74,7 @@ public class Sprint : MonoBehaviour {
         
         // Increases the speed if Score = a Division of 100 That = 0 ( Speed controller stops from Appending more then once due to Converting a float to a int).
          if (((int)m_PlayerSpeed.m_DistanceTravelledZ % 100) == 0 && m_PlayerSpeed.m_DistanceTravelledZ != 0 && SpeedControl == true) {
-             m_MaxSprint += m_SprintGainXLost;
+             m_MaxSprint += m_SprintGainXLost; m_Slider.maxValue = m_MaxSprint;
              m_XLeast += m_SprintGainXLost;
              m_BaseZMoveSpeed += m_ZSpeedGain;
              m_PlayerSpeed.m_ZMoveSpeed += m_ZSpeedGain;
