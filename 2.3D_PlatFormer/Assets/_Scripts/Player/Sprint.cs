@@ -13,7 +13,7 @@ public class Sprint : MonoBehaviour {
     
     [SerializeField] 
     private float m_ZWithSprintSpeed;                   // Base speed + sprint Max.
-    private float m_xWithLeastSpeed;
+    private float m_XLeastSpeed;
     [SerializeField]
     float m_NewPlayerXSpeed;                          // Base speed of x / 2. 
     
@@ -44,27 +44,22 @@ public class Sprint : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        m_ZWithSprintSpeed = m_BaseZMoveSpeed + m_MaxSprint;                                       // Sets the max Sprint Speed.
-        m_xWithLeastSpeed = m_OriginalXSpeed / 4 ;
+        m_ZWithSprintSpeed = m_BaseZMoveSpeed + m_MaxSprint;     // Sets the max Sprint Speed.
+        m_XLeastSpeed = m_OriginalXSpeed / 4 ;
         
-        // If Sprint Buttons Down and Current speed is not = Max sprint speed.
+        
+        // Keeps the x as interpolation of Z speed.
+        m_PlayerSpeed.m_XMoveSpeed = Mathf.Lerp(m_OriginalXSpeed, m_XLeastSpeed, Mathf.InverseLerp(m_BaseZMoveSpeed, m_MaxSprint, m_PlayerSpeed.m_ZMoveSpeed - 5));
+
         if (m_Sprint == true && m_PlayerSpeed.m_ZMoveSpeed < m_ZWithSprintSpeed) {  
-            m_PlayerSpeed.m_ZMoveSpeed += m_ZSprintAccUP * Time.smoothDeltaTime;                                 //  Z Acceleration.
+            m_PlayerSpeed.m_ZMoveSpeed += m_ZSprintAccUP * Time.smoothDeltaTime;           //  Z Acceleration.
         } else if (m_Sprint == false && m_PlayerSpeed.m_ZMoveSpeed > m_BaseZMoveSpeed) {
-            m_PlayerSpeed.m_ZMoveSpeed -= m_ZSprintAccDown * Time.smoothDeltaTime;                 // Z Deceleration.
+            m_PlayerSpeed.m_ZMoveSpeed -= m_ZSprintAccDown * Time.smoothDeltaTime;        // Z Deceleration.
             m_IsSprinting = false;
-        }
-        
-        if (m_Sprint == true && m_PlayerSpeed.m_XMoveSpeed > m_xWithLeastSpeed && m_Slider.value != m_Slider.maxValue) {
-            m_PlayerSpeed.m_XMoveSpeed -= 0.5f * Time.smoothDeltaTime;
-        } else if (m_Sprint == false && m_PlayerSpeed.m_XMoveSpeed < m_OriginalXSpeed) {
-            m_PlayerSpeed.m_XMoveSpeed += 0.5f * Time.smoothDeltaTime;
-        }
-        Debug.Log(m_PlayerSpeed.m_XMoveSpeed);
-        if (m_Slider.value == m_Slider.minValue && m_Sprint == false) {
-            m_PlayerSpeed.m_XMoveSpeed = m_OriginalXSpeed;                      // if not pressing sprint set to the base speed;
+        } else if (m_Slider.value == m_Slider.minValue && m_Sprint == false) {    // if not pressing sprint set to the base speed;
+            m_PlayerSpeed.m_XMoveSpeed = m_OriginalXSpeed;                      
             m_PlayerSpeed.m_ZMoveSpeed = m_BaseZMoveSpeed;
-        } 
+        }
         if (m_Slider.value >= m_Slider.maxValue /2) {                                                                      
             m_IsSprinting = true;
         }

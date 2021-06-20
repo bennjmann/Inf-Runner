@@ -176,10 +176,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -531,7 +531,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61989389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.2, y: 0.05, z: -10}
+  m_LocalPosition: {x: -32.1, y: 0.05, z: 480.8}
   m_LocalScale: {x: 2.5, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1014,7 +1014,6 @@ MonoBehaviour:
   - {fileID: 5597919800913248935, guid: 5cdd026bfb246504db0012c9e020ce4d, type: 3}
   - {fileID: 4532789175556799543, guid: 6c4887dda968a5f48aa7d3d5f7e954ec, type: 3}
   - {fileID: 6006014024693111992, guid: 6a8dff6581d99f8438bcebf58be22ce9, type: 3}
-  - {fileID: 7271847859011348884, guid: 8a0bf61b44fe7a04db013ccb56fe0f09, type: 3}
   - {fileID: 1161940031604722879, guid: fbd36c1c6f23c4b4cb2eecfb98c86145, type: 3}
   m_Player: {fileID: 919132148186897595}
 --- !u!4 &550137500
@@ -1173,10 +1172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2497,6 +2496,14 @@ PrefabInstance:
       propertyPath: m_Slider
       value: 
       objectReference: {fileID: 1635612394}
+    - target: {fileID: 7410554732539598495, guid: a454ba0f4a8e6b74c8e46a265220fafc, type: 3}
+      propertyPath: m_MaxSprint
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7410554732539598495, guid: a454ba0f4a8e6b74c8e46a265220fafc, type: 3}
+      propertyPath: m_XSpeedLost
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 7410554732539598495, guid: a454ba0f4a8e6b74c8e46a265220fafc, type: 3}
       propertyPath: m_ZSprintAccDown
       value: 7.5
